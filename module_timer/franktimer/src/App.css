@@ -1,0 +1,42 @@
+.App {
+  text-align: center;
+}
+.display-time{
+  font-size: 45px;
+  font-weight: bold;
+  margin: 60px 0;
+}
+.controls{
+  background-color: #eee;
+}
+.button{
+  width: 130px;
+  font-size: 20px;
+  padding: 10px 20px;
+  margin: 20px;
+  border:none;
+  border-radius: 4px;
+  background-color: lightgreen;
+  cursor: pointer;
+}
+.success{
+  background-color:lightgreen;
+}
+.warning{
+  background-color: gold;
+}
+.primary{
+  background-color:skyblue;
+}
+.undefined{
+  background-color: #e1e1e1;
+}
+.log{
+  text-align: center;
+  font-size:30px;
+  color: #e1e1e1;
+}
+.log .empty-log{
+  display: inline-block;
+  padding: 50px 10px;
+}
