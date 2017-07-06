@@ -19,6 +19,9 @@
   background-color: lightgreen;
   cursor: pointer;
 }
+.button:hover{
+  box-shadow: 0 0 25px rgba(0,0,0,0.2);
+}
 .success{
   background-color:lightgreen;
 }
@@ -39,4 +42,21 @@
 .log .empty-log{
   display: inline-block;
   padding: 50px 10px;
+}
+ul,li{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.log-item{
+  font-size: 25px;
+  color: #000;
+  border-bottom: 1px solid #eee;
+  padding:10px 0;
+}
+.log-item:hover{
+  background-color:rgba(238,238,238,0.5);
+}
+.danger{
+  background-color:hotpink;
 }

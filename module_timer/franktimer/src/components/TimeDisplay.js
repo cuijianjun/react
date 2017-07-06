@@ -12,7 +12,8 @@ class TimeDisplay extends React.Component{
         super(props);
         this.state = {
             time:0,
-            on:false
+            on:false,
+            log:[]
         };
     }
     //开始按钮
@@ -29,18 +30,57 @@ class TimeDisplay extends React.Component{
         this.setState({on:!this.state.on})
 
     }
+    //记录时间
+    handleLogTime = ()=> {
+        this.state.log.push(this.state.time);
+    }
+    handleClearLog = ()=>{
+        this.setState({log:[]})
+    }
+    handleReset = ()=>{
+        this.setState({time:0})
+    }
     render(){
         var time = format(this.state.time);
         return <div>
             <h1 className = "display-time">{time}</h1>
             <div className="controls">
-                <Button className="success" text = {this.state.on ? "暂停":"开始"} onClick={this.handleToggle}/>
-                <Button className="warning" text = "重置"/>
-                <Button className="primary" text = "记录"/>
-                <Button className="undefined" text = "清空"/>
+                <Button className = {this.state.on ? "danger":"success"} text = {this.state.on ? "暂停":"开始"} onClick={this.handleToggle}/>
+                <Button className="warning" text = "重置" onClick = {this.handleReset}/>
+                <Button className="primary" text = "记录" onClick = {this.handleLogTime}/>
+                <Button className="undefined" text = "清空" onClick = {this.handleClearLog}/>
             </div>
-            <DisplayLog/>
+            <DisplayLog log ={this.state.log}/>
         </div>
+    }
+    //监听键盘事件
+    componentDidMount(){
+        window.addEventListener("keydown",e =>e.preventDefault());
+
+        window.addEventListener("keyup",e =>{
+            e.preventDefault();
+            switch (e.keyCode){
+                case 32:
+                    this.handleToggle();
+                    break;
+                case 82:
+                    this.handleReset();
+                    break;
+                case 13:
+                    this.handleLogTime();
+                    break;
+                case 67:
+                    this.handleClearLog();
+                    break;
+                default:
+                    break;
+            }
+        });
+    }
+    //组件被移除，事件监听移除
+    componentWillUnmount(){
+        window.removeEventListener("keydown");
+        window.removeEventListener("keyup");
     }
 }
 
